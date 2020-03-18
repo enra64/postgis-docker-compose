@@ -1,0 +1,20 @@
+postgis:
+        image: postgis/postgis:12-3.0-alpine
+        restart: on-error
+        environment:
+          POSTGRES_PASSWORD: "password"
+          POSTGRES_USER: "user"
+        ports:
+        - 5432:5432
+        volumes:
+        - ./postgis-data:/var/lib/postgresql/data
+        - ./postgis-import-folder:/data-import
+
+pgadmin:
+        image: dpage/pgadmin4:latest
+        restart: on-error
+        environment:
+          PGADMIN_DEFAULT_EMAIL: "a"
+          PGADMIN_DEFAULT_PASSWORD: "a"
+        ports:
+        - "5555:80"
